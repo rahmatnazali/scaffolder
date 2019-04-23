@@ -1,0 +1,2 @@
+class _REPLACE_CLASS_NAME_ {
+}

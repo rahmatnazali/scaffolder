@@ -1,0 +1,12 @@
+base_class.php:
+  keywords:
+    _REPLACE_CLASS_NAME_: testing
+    _REPLACE_CLASS_CONTENT_:
+      file: template/content_file.php
+      keywords:
+        _KEYWORD_X_: "$value"
+
+sub/other_base_class.php:
+  keywords:
+    _REPLACE_CLASS_NAME_: testing
+
