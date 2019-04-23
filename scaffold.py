@@ -7,7 +7,9 @@ import os
 # @click.option('--scaffold_target', default='output', prompt='Scaffolding target', help = """Target folder to be copied from source folder after the renaming process is done""")
 def custom(scaffold_source, scaffold_config, scaffold_target):
 
-    # todo: source should target foldername inside scaffolder folder
+    # todo: path is exist?
+    # reading yml
+
     print(os.path.join('scaffolder', scaffold_source))
     print(scaffold_config)
     print(scaffold_target)
