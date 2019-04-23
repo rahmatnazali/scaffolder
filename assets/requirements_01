@@ -1,0 +1,18 @@
+Looking for a python 3 script script architecture to allow to scaffold / generate files and content.
+It basically copies a folder/file structure from the source, goes through a parser that replaces content in some files then copies the resulting processed files to a target folder. (see attached image)
+
+Here is the idea. Please ask if anything is unclear.
+
+script.py --scaffold_source "scaffold_a" --scaffold_config "config.yml" --scaffold_target "/Users/X/to_here"
+
+scaffold_source:
+This is the name of a folder source that will be copied. The available folder sources are all under the "scaffolder" folder. The scaffolder folder is where the "raw" source files are. Within these files, there are variables that will need to be replaced by either string or actual file contents (see scaffold_config).
+
+scaffold_config:
+This is where the config is specified on how to process the scaffold files.
+It is yaml file. The top level specifies the relative file name to process.
+The child "keywords" then starts the key / value replacement.
+The value of a key could actually be a file itself which itself could have keywords replacement recursively.
+
+scaffold_target:
+Each file should be copied for the target folder on completion.
