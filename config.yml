@@ -8,7 +8,7 @@ base_class.php:
         _KEYWORD_X_: "$value"
 
 sub/other_base_class.php:
-  rename_file : random name.php
+  # rename_file : random name.php
   keywords:
     _REPLACE_CLASS_NAME_: testing
 
@@ -17,3 +17,20 @@ sub/other_base_class.php:
 some_folder_that_not_exist/some_file_that_not_exist.php:
     keywords:
       _REPLACE_CLASS_NAME_: testing
+
+a.py:
+  rename_file: generated_file
+  keywords:
+    _FUNCTION_NAME_: generated_function_name
+    _FUNCTION_CONTENT_1:
+      file: template/b.py
+      keywords:
+        _CUSTOM_B_VALUE_: "True or False"
+    _FUNCTION_CONTENT_2:
+      file: template/c.py
+      keywords:
+        _CUSTOM_C_VALUE_: "(1, 2, 3, 4)"
+    _FUNCTION_CONTENT_3:
+      file: template/d.py
+      keywords:
+        _CUSTOM_D_VALUE_: "True or False"
