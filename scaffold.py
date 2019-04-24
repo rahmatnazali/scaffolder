@@ -20,16 +20,73 @@ class Document:
         # print(self.new_file_name)
 
     def process(self):
+        """
         # process keywords recursively
         # change file name
         # save file to dest
+        :return:
+        """
 
-        self.save_file()
-        return
-
+        # recursively process keywords
         keywords_dict = self.document_dict.get("keywords", {})
+        original_stream = processed_stream = open(self.file_src_path).read()
+
+        # print(keywords_dict)
+        # print(original_stream)
+
+        # save file
+        processed_stream = self.process_keyword(keywords_dict, processed_stream)
+        if processed_stream != original_stream:
+            self.save_file(processed_stream)
+        else:
+            self.save_file()
+
+
+    def process_keyword(self, sub_dictionary, stream):
+        """
+        Recursively process a keyword dictionnary
+        :param sub_dictionary:
+        :param stream:
+        :return:
+        """
+
+        for key, value in sub_dictionary.items():
+            print(key, value)
+            if isinstance(value, str):
+                stream = stream.replace(key, value)
+                print('change', key, 'to', value)
+                print(stream)
+                print()
+
+            elif isinstance(value, dict):
+                # process the child keywords first
+                template_path = value.get('file', '')
+                keyword_dict = value.get('keywords', {})
+
+                if not template_path:
+                    print("no 'file' key found on YML")
+                    return stream
+
+                template_path = Path(template_path)
+                if not template_path.exists():
+                    print("File not found: {}".format(template_path))
+                    return stream
+
+                with open(template_path) as template_file:
+                    original_stream = template_file.read()
+
+                processed_stream = self.process_keyword(keyword_dict, original_stream)
+
+                if processed_stream != original_stream:
+                    stream = stream.replace(key, processed_stream.lstrip())
+        return stream
 
     def save_file(self, stream = None):
+        """
+
+        :param stream:
+        :return:
+        """
         if self.new_file_name:
             save_path = self.file_dest_path.parent / self.new_file_name
             # if no extension given, it will add the extension
@@ -42,12 +99,11 @@ class Document:
         if not self.file_dest_path.exists():
             try:
                 os.makedirs(os.path.dirname(self.file_dest_path))
-                # file_dest_path.mkdir(file_dest_path.parent, exist_ok=True)
             except OSError as exc:  # Guard against race condition
                 if exc.errno != errno.EEXIST:
                     raise
 
-        # todo: open and write stream
+        # open and write stream
         if stream:
             with open(save_path, 'w') as output_file:
                 output_file.write(stream)
@@ -56,27 +112,6 @@ class Document:
 
         print("saving file: {}".format(save_path))
 
-class Keyword:
-    def __init__(self, keyword_dict):
-        self.keyword_dict = keyword_dict
-
-    def process(self):
-
-        for k, v in self.keyword_dict.items():
-            print(k, v)
-            if isinstance(v, str):
-                print("string")
-            elif isinstance(v, dict):
-                print("dict")
-
-
-        pass
-
-    def recursive(self):
-        pass
-
-    pass
-
 
 # @click.command()
 # @click.option('--scaffold_source', default='default_folder', prompt='Scaffolding source', help = """Folder source that will be copied. The available folder sources are all under the "scaffolder" folder.""")
@@ -84,7 +119,6 @@ class Keyword:
 # @click.option('--scaffold_target', default='output', prompt='Scaffolding target', help = """Target folder to be copied from source folder after the renaming process is done""")
 
 def custom(scaffold_source, scaffold_config, scaffold_target):
-    # todo: path is exist?
 
     # init
     scaffold_source_root = Path('scaffolder', scaffold_source)
@@ -92,7 +126,7 @@ def custom(scaffold_source, scaffold_config, scaffold_target):
     scaffold_dest_root = Path(scaffold_target)
 
     # reading yaml config
-    yaml_dict = yaml.load(open(scaffold_config))
+    yaml_dict = yaml.load(open(scaffold_config_root))
 
     """
     logic
@@ -124,3 +158,7 @@ def custom(scaffold_source, scaffold_config, scaffold_target):
 #     custom()
 
 custom('default_folder', 'config.yml', 'output/to_here')
+
+
+
+# todo: write unit test
