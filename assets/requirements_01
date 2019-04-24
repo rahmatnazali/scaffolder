@@ -12,6 +12,8 @@ scaffold_config:
 This is where the config is specified on how to process the scaffold files.
 It is yaml file. The top level specifies the relative file name to process.
 The child "keywords" then starts the key / value replacement.
+
+[IMPORTANT]
 The value of a key could actually be a file itself which itself could have keywords replacement recursively.
 
 scaffold_target:

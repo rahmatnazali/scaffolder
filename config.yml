@@ -1,4 +1,5 @@
 base_class.php:
+  rename_file: renamed_file
   keywords:
     _REPLACE_CLASS_NAME_: testing
     _REPLACE_CLASS_CONTENT_:
@@ -7,6 +8,12 @@ base_class.php:
         _KEYWORD_X_: "$value"
 
 sub/other_base_class.php:
+  rename_file : random name.php
   keywords:
     _REPLACE_CLASS_NAME_: testing
 
+
+# if no file found, will log / throw error
+some_folder_that_not_exist/some_file_that_not_exist.php:
+    keywords:
+      _REPLACE_CLASS_NAME_: testing
