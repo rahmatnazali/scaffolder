@@ -18,6 +18,7 @@ some_folder_that_not_exist/some_file_that_not_exist.php:
     keywords:
       _REPLACE_CLASS_NAME_: testing
 
+# my own testing case: recursively decorate a.py from b, c, d.py
 a.py:
   rename_file: generated_file
   keywords:
