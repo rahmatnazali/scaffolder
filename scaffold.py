@@ -2,6 +2,8 @@ import click
 import yaml
 import os
 from pathlib import Path
+from shutil import copyfile
+import errno
 
 class Document:
 
@@ -27,12 +29,7 @@ class Document:
 
         keywords_dict = self.document_dict.get("keywords", {})
 
-        if keywords_dict:
-            keyword = Keyword(keywords_dict)
-            keyword.process()
-        pass
-
-    def save_file(self):
+    def save_file(self, stream = None):
         if self.new_file_name:
             save_path = self.file_dest_path.parent / self.new_file_name
             # if no extension given, it will add the extension
@@ -40,7 +37,23 @@ class Document:
                 save_path = Path(str(save_path) + self.file_src_path.suffix)
         else:
             save_path = self.file_dest_path
+
+        # make sure that directory is exist
+        if not self.file_dest_path.exists():
+            try:
+                os.makedirs(os.path.dirname(self.file_dest_path))
+                # file_dest_path.mkdir(file_dest_path.parent, exist_ok=True)
+            except OSError as exc:  # Guard against race condition
+                if exc.errno != errno.EEXIST:
+                    raise
+
         # todo: open and write stream
+        if stream:
+            with open(save_path, 'w') as output_file:
+                output_file.write(stream)
+        else:
+            copyfile(self.file_src_path, save_path)
+
         print("saving file: {}".format(save_path))
 
 class Keyword:
