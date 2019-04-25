@@ -2,7 +2,15 @@
 
 (this doc is work in progress)
 
+##### Information
 - requirements: [requirements_01](assets/requirements_01)
+- folder hierarchy
+  - `assets`: several files for doc
+  - `output`: default output folder for scaffolding result
+  - `scaffolder`: default directory for storing 
+  - `snippets`: literally junk
+  - `template`: temporal directory to save the "file content as a template"
+- result directory according to the [config.yml](config.yml) directed to `path/to/your/prefered/folder` can be found [here](output/path/to/your/prefered/folder)
 
 ##### Usage
 ```
@@ -22,13 +30,25 @@ Options:
   -v                      Verbose mode: will print each content change/replace
   --help                  Show this message and exit.
 
+
+
+$ python3 scaffold.py --scaffold_source "scaffold_a" --scaffold_config "config.yml" --scaffold_target "output/path/to/your/prefered/folder"
+
+Scaffolding    : scaffolder/scaffold_a/base_class.php --> output/path/to/your/prefered/folder/ScaffoldedClass.php
+Scaffolding    : scaffolder/scaffold_a/sub/other_base_class.php --> output/path/to/your/prefered/folder/sub/other_base_class.php
+file not found : scaffolder/scaffold_a/some_folder_that_not_exist/some_file_that_not_exist.php
+Scaffolding    : scaffolder/scaffold_a/a.py --> output/path/to/your/prefered/folder/scaffolded_file_name.py
+
 ```
 
 ###### Verbose mode
 ![](assets/verbose_mode_on.png)
 
-###### without Verbose mode
+###### Without verbose mode
 ![](assets/verbose_mode_off.png)
+
+###### Result (according to the self-defined case)
+![](assets/script_result_ll.png)
 
 
 ##### Getting started
