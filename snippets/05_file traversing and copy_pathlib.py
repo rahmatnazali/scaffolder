@@ -4,9 +4,6 @@ import errno
 from shutil import copyfile
 from pathlib import Path
 
-# todo: rename filename
-# todo: rename content
-
 # os crawler
 from numpy.distutils.conv_template import paren_repl
 
@@ -35,7 +32,7 @@ for path, directory, files in os.walk('../scaffolder/default_folder'):
         print('dest:', file_dest_path)
 
 
-        # todo: process the file
+        # process the file
 
         # make sure that directory is exist
         if not file_dest_path.exists():

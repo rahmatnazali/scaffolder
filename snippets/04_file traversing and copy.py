@@ -3,9 +3,6 @@ import os
 import errno
 from shutil import copyfile
 
-# todo: rename filename
-# todo: rename content
-
 # os crawler
 
 output_root = '../output'
@@ -28,7 +25,7 @@ for path, directory, files in os.walk('../scaffolder/default_folder'):
         print('source:', file_source_path)
         print('dest:', file_dest_path)
 
-        # todo: process the file
+        # process the file
 
         # make sure that directory is exist
         if not os.path.exists(os.path.dirname(file_dest_path)):
