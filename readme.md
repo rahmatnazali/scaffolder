@@ -4,13 +4,6 @@
 
 - requirements: [requirements_01](assets/requirements_01)
 
-##### Todo:
-  - finish the doc
-  - **[DONE]** Test with my own case and YAML config
-  - Test with client's case of YAML config
-  - my question to client
-    - do you have any scaffolding example or case that suits to this testing?
-    
 ##### Usage
 ```
 $ python3 scaffold.py --help
@@ -31,10 +24,23 @@ Options:
 
 ```
 
-##### Verbose mode
+###### Verbose mode
 ![](assets/verbose_mode_on.png)
 
-##### without Verbose mode
+###### without Verbose mode
 ![](assets/verbose_mode_off.png)
 
 
+##### Getting started
+
+```
+$ cd python_scaffolder
+$ pip install -r requirements.txt
+```
+
+##### Todo:
+  - finish the doc
+  - **[DONE]** Test with my own case and YAML config
+  - Test with client's case of YAML config
+  - my question to client
+    - do you have any scaffolding example or case that suits to this testing?
