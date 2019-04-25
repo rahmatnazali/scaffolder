@@ -9,7 +9,6 @@
   - **[DONE]** Test with my own case and YAML config
   - Test with client's case of YAML config
   - my question to client
-    - Will the target directory be absolute path, relative path, or can be both?
     - do you have any scaffolding example or case that suits to this testing?
     
 ##### Usage
