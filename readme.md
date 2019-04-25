@@ -41,6 +41,48 @@ Scaffolding    : scaffolder/scaffold_a/a.py --> output/path/to/your/prefered/fol
 
 ```
 
+##### Example of used YAML
+
+```yaml
+base_class.php:
+  rename_file: ScaffoldedClass
+  keywords:
+    _REPLACE_CLASS_NAME_: ScaffoldedClass
+    _REPLACE_CLASS_CONTENT_:
+      file: template/content_file.php
+      keywords:
+        _KEYWORD_X_: "scaffolded_variable"
+
+sub/other_base_class.php:
+  keywords:
+    _REPLACE_CLASS_NAME_: testing
+
+
+# if no file found, will log / throw error
+some_folder_that_not_exist/some_file_that_not_exist.php:
+    keywords:
+      _REPLACE_CLASS_NAME_: testing
+
+# my own testing case: recursively decorate a.py from b, c, d.py
+a.py:
+  rename_file: scaffolded_file_name
+  keywords:
+    _FUNCTION_NAME_: scaffolded_function_name
+    _FUNCTION_CONTENT_1:
+      file: template/b.py
+      keywords:
+        _CUSTOM_B_VALUE_: "True or False"
+    _FUNCTION_CONTENT_2:
+      file: template/c.py
+      keywords:
+        _CUSTOM_C_VALUE_: "(1, 2, 3, 4)"
+    _FUNCTION_CONTENT_3:
+      file: template/d.py
+      keywords:
+        _CUSTOM_D_VALUE_: "{'a':{'a' : 'a'}, 'b':{'b' : 'b'}}"
+
+```
+
 ###### Verbose mode
 ![](assets/verbose_mode_on.png)
 
