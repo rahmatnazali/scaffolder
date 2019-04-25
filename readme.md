@@ -41,7 +41,7 @@ Scaffolding    : scaffolder/scaffold_a/a.py --> output/path/to/your/prefered/fol
 
 ```
 
-##### Example of used YAML
+###### Example of used YAML
 
 ```yaml
 base_class.php:
