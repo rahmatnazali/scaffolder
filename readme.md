@@ -1,6 +1,6 @@
 # Python scaffolder
 
-(this doc is work in progress)
+**This work is considered done. Please let me know should you need anything**
 
 ##### Information
 - requirements: [requirements_01](assets/requirements_01)
@@ -101,9 +101,7 @@ $ pip install -r requirements.txt
 ```
 
 ##### Todo:
-  - finish the doc
+  - **[DONE]** finish the doc
   - **[DONE]** Test with my own case and YAML config
-  - Test with client's case of YAML config
-  - my question to client
-    - do you have any scaffolding example or case that suits to this testing?
-    - should I write unitest?
+  - **[DONE]** Test with client's case of YAML config
+  - should I write unitest? let me know if you need this in future time
